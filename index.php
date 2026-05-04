@@ -52,35 +52,7 @@ include 'koneksi.php';
                 <h1 class="sitename">Bootslander</h1>
             </a>
 
-            <nav id="navmenu" class="navmenu">
-                <ul>
-                    <li><a href="assets/frontend/#hero" class="active">Home</a></li>
-                    <li><a href="assets/frontend/#about">About</a></li>
-                    <li><a href="assets/frontend/#features">Features</a></li>
-                    <li><a href="assets/frontend/#gallery">Gallery</a></li>
-                    <li><a href="assets/frontend/#team">Team</a></li>
-                    <li><a href="assets/frontend/#pricing">Pricing</a></li>
-                    <li class="dropdown"><a href="assets/frontend/#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                        <ul>
-                            <li><a href="assets/frontend/#">Dropdown 1</a></li>
-                            <li class="dropdown"><a href="assets/frontend/#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                                <ul>
-                                    <li><a href="assets/frontend/#">Deep Dropdown 1</a></li>
-                                    <li><a href="assets/frontend/#">Deep Dropdown 2</a></li>
-                                    <li><a href="assets/frontend/#">Deep Dropdown 3</a></li>
-                                    <li><a href="assets/frontend/#">Deep Dropdown 4</a></li>
-                                    <li><a href="assets/frontend/#">Deep Dropdown 5</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="assets/frontend/#">Dropdown 2</a></li>
-                            <li><a href="assets/frontend/#">Dropdown 3</a></li>
-                            <li><a href="assets/frontend/#">Dropdown 4</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="assets/frontend/#contact">Contact</a></li>
-                </ul>
-                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-            </nav>
+            <?php include 'elements-homepage/navbar.php'; ?>
 
         </div>
     </header>
@@ -98,8 +70,8 @@ include 'koneksi.php';
                     </div>
 
                     <div class="col-lg-6  d-flex flex-column justify-content-center" data-aos="fade-in">
-                        <h1>Build Your Landing Page With <span>Bootslander</span></h1>
-                        <p>We are team of talented designers making websites with Bootstrap</p>
+                        <h1>Sistem informasi <br><span>Inventory Gudang Barang</span></h1>
+                        <p>Management stok keluar masuk barang menjadi mudah dan efisien</p>
                         <div class="d-flex">
                             <a href="assets/frontend/#about" class="btn-get-started">Get Started</a>
                             <a href="assets/frontend/https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
@@ -887,74 +859,7 @@ include 'koneksi.php';
     </main>
 
     <footer id="footer" class="footer dark-background">
-
-        <div class="container footer-top">
-            <div class="row gy-4">
-                <div class="col-lg-4 col-md-6 footer-about">
-                    <a href="assets/frontend/index.html" class="logo d-flex align-items-center">
-                        <span class="sitename">Bootslander</span>
-                    </a>
-                    <div class="footer-contact pt-3">
-                        <p>A108 Adam Street</p>
-                        <p>New York, NY 535022</p>
-                        <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-                        <p><strong>Email:</strong> <span>info@example.com</span></p>
-                    </div>
-                    <div class="social-links d-flex mt-4">
-                        <a href="assets/frontend/"><i class="bi bi-twitter-x"></i></a>
-                        <a href="assets/frontend/"><i class="bi bi-facebook"></i></a>
-                        <a href="assets/frontend/"><i class="bi bi-instagram"></i></a>
-                        <a href="assets/frontend/"><i class="bi bi-linkedin"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 footer-links">
-                    <h4>Useful Links</h4>
-                    <ul>
-                        <li><a href="assets/frontend/#">Home</a></li>
-                        <li><a href="assets/frontend/#">About us</a></li>
-                        <li><a href="assets/frontend/#">Services</a></li>
-                        <li><a href="assets/frontend/#">Terms of service</a></li>
-                        <li><a href="assets/frontend/#">Privacy policy</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-2 col-md-3 footer-links">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><a href="assets/frontend/#">Web Design</a></li>
-                        <li><a href="assets/frontend/#">Web Development</a></li>
-                        <li><a href="assets/frontend/#">Product Management</a></li>
-                        <li><a href="assets/frontend/#">Marketing</a></li>
-                        <li><a href="assets/frontend/#">Graphic Design</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-4 col-md-12 footer-newsletter">
-                    <h4>Our Newsletter</h4>
-                    <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-                    <form action="forms/newsletter.php" method="post" class="php-email-form">
-                        <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="container copyright text-center mt-4">
-            <p>© <span>Copyright</span> <strong class="px-1 sitename">Bootslander</strong> <span>All Rights Reserved</span></p>
-            <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you've purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> | <a href="https://bootstrapmade.com/tools/">DevTools</a>
-            </div>
-        </div>
-
+        <?php include 'elements-homepage/footer.php'; ?>
     </footer>
 
     <!-- Scroll Top -->

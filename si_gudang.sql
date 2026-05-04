@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2026 at 06:22 AM
+-- Generation Time: May 04, 2026 at 08:52 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -74,7 +74,8 @@ CREATE TABLE `tb_barang` (
 --
 
 INSERT INTO `tb_barang` (`kd_barang`, `kode_jenis`, `nama_barang`, `stok`, `harga_beli`, `harga_jual`, `gambar_produk`) VALUES
-('BR-001', 'JN-001', 'Oli', 100, 40000, 50000, '');
+('BR-001', 'JN-001', 'Oli SPX 2', 100, 40000, 50000, '1777877168_SPX2.jpg-IMAGE.jpg'),
+('BR-002', 'JN-001', 'Oli MPX 2', 50, 42000, 45000, '1777877404_Oli-MPX2.jpg');
 
 -- --------------------------------------------------------
 
@@ -109,7 +110,8 @@ CREATE TABLE `tb_jenis` (
 --
 
 INSERT INTO `tb_jenis` (`kode_jenis`, `jenis`, `satuan`) VALUES
-('JN-001', 'Otomotif', 'Pcs');
+('JN-001', 'Otomotif', 'Pcs'),
+('JN-002', 'Pakaian', 'Lusin');
 
 -- --------------------------------------------------------
 
@@ -162,17 +164,17 @@ CREATE TABLE `tb_supplier` (
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `nama` varchar(55) NOT NULL,
-  `alamat` text NOT NULL,
-  `pekerjaan` varchar(55) NOT NULL
+  `username` varchar(55) NOT NULL,
+  `password` varchar(55) NOT NULL,
+  `tipe_user` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `nama`, `alamat`, `pekerjaan`) VALUES
-(6, 'Agus', 'Surabaya', 'Cuci Ompreng');
+INSERT INTO `user` (`id`, `username`, `password`, `tipe_user`) VALUES
+(8, 'dapa', 'f7304c05a5c5806d5b44ea8b7295e2e6', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -249,7 +251,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

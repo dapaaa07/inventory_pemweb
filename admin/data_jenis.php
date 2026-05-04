@@ -15,11 +15,12 @@
     </div>
     <div class="navbar">
         <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li>
                 <a href="#" class="active">Data Master</a>
                 <ul class="dropdown-content">
                     <li><a href="#">Data User</a></li>
+                    <li><a href="#">Data Jenis Barang</a></li>
                     <li><a href="data_barang.php">Data Barang</a></li>
                     <li><a href="#">Data Customer</a></li>
                     <li><a href="#">Data Supplier</a></li>
@@ -59,12 +60,9 @@
     <table border="1">
         <tr>
             <th>No</th>
-            <th>Kode Barang</th>
             <th>Kode Jenis</th>
+            <th>Nama Jenis</th>
             <th>Nama Barang</th>
-            <th>Stok</th>
-            <th>Harga Beli</th>
-            <th>Harga Jual</th>
             <th>Opsi</th>
         </tr>
         <?php

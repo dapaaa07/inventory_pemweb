@@ -2,14 +2,7 @@
 session_start();
 
 // 1. CEK JIKA SUDAH LOGIN: Arahkan ke halaman masing-masing agar tidak bisa buka form login lagi
-if (isset($_SESSION['status']) && $_SESSION['status'] == "login") {
-    if ($_SESSION['tipe_user'] == "admin") {
-        header("location: admin/index.php");
-    } else {
-        header("location: homepage.php");
-        exit;
-    }
-}
+
 
 // Memanggil file koneksi
 include 'koneksi.php';
@@ -43,7 +36,18 @@ if (isset($_POST['login'])) {
         $error = "Username atau Password salah!";
     }
 }
+
+if (isset($_SESSION['status']) && $_SESSION['status'] == "login") {
+    if ($_SESSION['tipe_user'] == "admin") {
+        header("location: admin/index.php");
+    } else {
+        header("location: homepage.php");
+        exit;
+    }
+}
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">

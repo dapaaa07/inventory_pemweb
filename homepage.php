@@ -1,16 +1,20 @@
 <?php
-// Memanggil file koneksi database di paling atas
-include 'koneksi.php';
-// 1. CEK JIKA BELUM LOGIN
-if (!isset($_SESSION['status']) || $_SESSION['status'] != "login") {
-    header("location: index.php?pesan=belum_login");
-    exit; // Wajib ada
-}
+// Wajib memanggil session_start() di baris pertama agar data login terbaca!
+session_start();
 
-// 2. Jika yang masuk adalah ADMIN, lempar ke dashboard admin
-if ($_SESSION['tipe_user'] == "admin") {
-    header("location: admin/index.php");
-    exit; // Wajib ada
+// Memanggil file koneksi database
+include 'koneksi.php';
+
+// 1. CEK JIKA BELUM LOGIN telah dihapus sementara di sini. 
+// Siapa pun sekarang bisa melihat halaman homepage ini.
+
+// 2. Jika yang masuk terdeteksi sebagai ADMIN, lempar ke dashboard admin.
+// Kita bungkus dengan isset() agar tidak muncul error "Undefined index" bagi pengunjung yang belum login.
+if (isset($_SESSION['status']) && $_SESSION['status'] == "login") {
+    if ($_SESSION['tipe_user'] == "admin") {
+        header("location: admin/index.php");
+        exit;
+    }
 }
 ?>
 

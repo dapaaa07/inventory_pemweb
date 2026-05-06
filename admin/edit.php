@@ -1,6 +1,7 @@
 <?php
 // Memanggil file koneksi database di paling atas
 include 'koneksi.php';
+include 'cek_admin.php';
 
 // Menangkap id dari URL (dikirim dari tombol Edit di index.php)
 $id = $_GET['id'];

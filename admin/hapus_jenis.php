@@ -1,5 +1,6 @@
 <?php 
 include '../koneksi.php';
+include 'cek_admin.php';
 
 $id = $_GET['id']; // ID ini menangkap kode_jenis dari URL
 

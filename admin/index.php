@@ -1,6 +1,7 @@
 <?php
 // Memanggil file koneksi database di paling atas
 include '../koneksi.php';
+include 'cek_admin.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +23,8 @@ include '../koneksi.php';
         </div>
         <!-- page-body-wrapper ends -->
     </div>
+    <!-- Memanggil file footer dari folder elements -->
+    <?php include 'elements/footer.php'; ?>
     <!-- container-scroller -->
 
     <!-- ... -->

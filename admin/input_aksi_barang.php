@@ -1,5 +1,6 @@
 <?php
 include '../koneksi.php';
+include 'cek_admin.php';
 
 $kd_barang   = $_POST['kd_barang'];
 $kode_jenis  = $_POST['kode_jenis'];

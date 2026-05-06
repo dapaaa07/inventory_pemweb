@@ -1,15 +1,23 @@
 <?php
+// Memanggil file koneksi dari folder utama
 include '../koneksi.php';
+include 'cek_admin.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Memanggil Header (CSS) -->
 <?php include 'elements/header.php'; ?>
 
 <body>
     <div class="container-scroller d-flex">
+        
+        <!-- Memanggil Sidebar -->
         <?php include 'elements/sidebar.php'; ?>
+        
         <div class="container-fluid page-body-wrapper">
+            
+            <!-- Memanggil Navbar -->
             <?php include 'elements/navbar.php'; ?>
 
             <div class="main-panel">
@@ -41,7 +49,7 @@ include '../koneksi.php';
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                // Join tabel tb_barang dan tb_jenis untuk menampilkan nama jenis
+                                                // Join tabel tb_barang dan tb_jenis untuk menampilkan nama jenis[cite: 11]
                                                 $query = mysqli_query($koneksi, "SELECT tb_barang.*, tb_jenis.jenis FROM tb_barang LEFT JOIN tb_jenis ON tb_barang.kode_jenis = tb_jenis.kode_jenis ORDER BY tb_barang.kd_barang ASC");
                                                 $no = 1;
                                                 while ($data = mysqli_fetch_array($query)) {
@@ -49,7 +57,7 @@ include '../koneksi.php';
                                                     <tr>
                                                         <td><?php echo $no++; ?></td>
                                                         <td>
-                                                            <!-- Menampilkan gambar dari folder images -->
+                                                            <!-- Menampilkan gambar dari folder images[cite: 11] -->
                                                             <?php if ($data['gambar_produk'] != ""): ?>
                                                                 <img src="images/<?php echo $data['gambar_produk']; ?>" style="width: 50px; height: 50px; border-radius: 5px; object-fit: cover;" alt="Gambar">
                                                             <?php else: ?>
@@ -81,46 +89,16 @@ include '../koneksi.php';
                         </div>
                     </div>
                 </div>
+                <!-- content-wrapper ends -->
             </div>
+            <!-- main-panel ends -->
         </div>
+        <!-- page-body-wrapper ends -->
     </div>
+    <!-- container-scroller -->
 
-    <!-- Script Utama -->
-    <script src="../assets/backend/vendors/js/vendor.bundle.base.js"></script>
-    <script src="../assets/backend/js/off-canvas.js"></script>
-    <script src="../assets/backend/js/hoverable-collapse.js"></script>
-    <script src="../assets/backend/js/template.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Memanggil Footer dan Script JS dari folder elements -->
+    <?php include 'elements/footer.php'; ?>
 
-    <!-- Script SweetAlert -->
-    <script>
-        $('.btn-hapus').on('click', function(e) {
-            e.preventDefault();
-            const href = $(this).attr('href');
-            const nama = $(this).attr('data-nama');
-
-            Swal.fire({
-                title: 'Apakah Anda yakin?',
-                text: "Data Barang '" + nama + "' akan dihapus permanen beserta gambarnya!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, Hapus!',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.location.href = href;
-                }
-            })
-        });
-    </script>
-
-    <?php if (isset($_GET['status']) && $_GET['status'] == 'sukses'): ?>
-        <script>
-            Swal.fire('Terhapus!', 'Data barang berhasil dihapus.', 'success');
-        </script>
-    <?php endif; ?>
 </body>
-
 </html>

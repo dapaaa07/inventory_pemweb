@@ -1,5 +1,6 @@
 <?php
 include '../koneksi.php';
+include 'cek_admin.php';
 $id = $_GET['id']; // ID di sini adalah kode_jenis
 
 $query = mysqli_query($koneksi, "SELECT * FROM tb_jenis WHERE kode_jenis='$id'");

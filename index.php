@@ -1,33 +1,42 @@
 <?php
 session_start();
-// Memanggil file koneksi database
+
+// 1. CEK JIKA SUDAH LOGIN: Arahkan ke halaman masing-masing agar tidak bisa buka form login lagi
+if (isset($_SESSION['status']) && $_SESSION['status'] == "login") {
+    if ($_SESSION['tipe_user'] == "admin") {
+        header("location: admin/index.php");
+    } else {
+        header("location: homepage.php");
+        exit;
+    }
+}
+
+// Memanggil file koneksi
 include 'koneksi.php';
 
-// Logika Login
+// 2. LOGIKA LOGIN
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
-    // Enkripsi password dengan md5 agar cocok dengan data saat register
-    $password = md5($_POST['password']);
+    $password = md5($_POST['password']); 
 
-    // Mencari kecocokan data di database
     $query = mysqli_query($koneksi, "SELECT * FROM user WHERE username='$username' AND password='$password'");
     $cek = mysqli_num_rows($query);
 
     if ($cek > 0) {
         $data = mysqli_fetch_assoc($query);
-
-        // Menyimpan data ke dalam session
+        
+        // Simpan ke session
         $_SESSION['username'] = $username;
-        $_SESSION['tipe_user'] = $data['tipe_user'];
+        // Gunakan strtolower() agar aman jika di database tertulis 'User' atau 'USER'
+        $_SESSION['tipe_user'] = strtolower(trim($data['tipe_user'])); 
         $_SESSION['status'] = "login";
-
-        // Pengecekan tipe_user untuk mengarahkan ke halaman yang tepat
-        if ($data['tipe_user'] == "admin") {
-            // Jika admin, arahkan ke folder admin
+        
+        // Logika routing yang lebih aman (Bulletproof)
+        if ($_SESSION['tipe_user'] == "admin") {
             header("location: admin/index.php");
-        } else if ($data['tipe_user'] == "user") {
-            // Jika user biasa, arahkan ke index utama
-            header("location: homepage.php");
+        } else {
+            // Semua tipe_user selain "admin" otomatis diarahkan ke homepage
+            header("location: homepage.php"); 
         }
         exit;
     } else {
@@ -38,15 +47,12 @@ if (isset($_POST['login'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login - Spica Admin</title>
-    <!-- base:css -->
+    <title>Login - Inventory</title>
     <link rel="stylesheet" href="assets/backend/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/backend/vendors/css/vendor.bundle.base.css">
-    <!-- inject:css -->
     <link rel="stylesheet" href="assets/backend/css/style.css">
     <link rel="shortcut icon" href="assets/backend/images/favicon.png" />
 </head>
@@ -62,10 +68,9 @@ if (isset($_POST['login'])) {
                                 <img src="assets/backend/images/logo.svg" alt="logo">
                             </div>
                             <h4>Welcome back!</h4>
-                            <h6 class="font-weight-light">Happy to see you again!</h6>
-
-                            <!-- Menampilkan Pesan Error jika login gagal -->
-                            <?php if (isset($error)) : ?>
+                            <h6 class="font-weight-light">Silakan login untuk melanjutkan.</h6>
+                            
+                            <?php if(isset($error)) : ?>
                                 <div class="alert alert-danger" role="alert">
                                     <?php echo $error; ?>
                                 </div>
@@ -94,23 +99,14 @@ if (isset($_POST['login'])) {
                                         <input type="password" class="form-control form-control-lg border-left-0" id="password" name="password" placeholder="Password" required>
                                     </div>
                                 </div>
-                                <div class="my-2 d-flex justify-content-between align-items-center">
-                                    <div class="form-check">
-                                        <label class="form-check-label text-muted">
-                                            <input type="checkbox" class="form-check-input">
-                                            Keep me signed in
-                                        </label>
-                                    </div>
-                                </div>
+                                
                                 <div class="my-3">
-                                    <!-- Tombol submit -->
                                     <button type="submit" name="login" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOGIN</button>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    Don't have an account? <a href="register.php" class="text-primary">Create</a>
+                                    Belum punya akun? <a href="register.php" class="text-primary">Daftar</a>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                     <div class="col-lg-6 login-half-bg d-none d-lg-flex flex-row">
@@ -120,11 +116,21 @@ if (isset($_POST['login'])) {
             </div>
         </div>
     </div>
-    <!-- base:js -->
+    
     <script src="assets/backend/vendors/js/vendor.bundle.base.js"></script>
-    <script src="assets/backend/js/off-canvas.js"></script>
-    <script src="assets/backend/js/hoverable-collapse.js"></script>
-    <script src="assets/backend/js/template.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!-- SweetAlert Penangkap Pesan -->
+    <?php if(isset($_GET['pesan'])): ?>
+        <script>
+            <?php if($_GET['pesan'] == "belum_login"): ?>
+                Swal.fire({ icon: 'warning', title: 'Akses Ditolak!', text: 'Anda harus login terlebih dahulu.' });
+            <?php elseif($_GET['pesan'] == "akses_ditolak"): ?>
+                Swal.fire({ icon: 'error', title: 'Terlarang!', text: 'Anda tidak memiliki hak akses Admin.' });
+            <?php elseif($_GET['pesan'] == "logout"): ?>
+                Swal.fire({ icon: 'success', title: 'Sampai Jumpa!', text: 'Anda telah berhasil logout.' });
+            <?php endif; ?>
+        </script>
+    <?php endif; ?>
+</body>
 </html>

@@ -1,4 +1,7 @@
-<?php include '../koneksi.php'; ?>
+<?php include '../koneksi.php'; 
+include 'cek_admin.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

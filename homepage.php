@@ -1,6 +1,17 @@
 <?php
 // Memanggil file koneksi database di paling atas
 include 'koneksi.php';
+// 1. CEK JIKA BELUM LOGIN
+if (!isset($_SESSION['status']) || $_SESSION['status'] != "login") {
+    header("location: index.php?pesan=belum_login");
+    exit; // Wajib ada
+}
+
+// 2. Jika yang masuk adalah ADMIN, lempar ke dashboard admin
+if ($_SESSION['tipe_user'] == "admin") {
+    header("location: admin/index.php");
+    exit; // Wajib ada
+}
 ?>
 
 <!DOCTYPE html>

@@ -1,19 +1,23 @@
 <?php
-// Memanggil file koneksi
-include '../koneksi.php'; // Sesuaikan jalur jika koneksi.php ada di luar folder, misal: '../koneksi.php'
+// Memanggil file koneksi dari folder utama
+include '../koneksi.php';
+include 'cek_admin.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Memanggil Header (CSS) -->
 <?php include 'elements/header.php'; ?>
 
 <body>
     <div class="container-scroller d-flex">
-        <!-- Sidebar -->
+        
+        <!-- Memanggil Sidebar -->
         <?php include 'elements/sidebar.php'; ?>
 
         <div class="container-fluid page-body-wrapper">
-            <!-- Navbar -->
+            
+            <!-- Memanggil Navbar -->
             <?php include 'elements/navbar.php'; ?>
 
             <div class="main-panel">
@@ -42,7 +46,7 @@ include '../koneksi.php'; // Sesuaikan jalur jika koneksi.php ada di luar folder
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                // Mengambil data dari tb_jenis
+                                                // Mengambil data dari tb_jenis[cite: 12]
                                                 $query = mysqli_query($koneksi, "SELECT * FROM tb_jenis ORDER BY kode_jenis ASC");
                                                 $no = 1;
                                                 while ($data = mysqli_fetch_array($query)) {
@@ -72,48 +76,16 @@ include '../koneksi.php'; // Sesuaikan jalur jika koneksi.php ada di luar folder
                         </div>
                     </div>
                 </div>
-                <!-- Jika Anda punya elements/footer.php, panggil di sini -->
+                <!-- content-wrapper ends -->
             </div>
+            <!-- main-panel ends -->
         </div>
+        <!-- page-body-wrapper ends -->
     </div>
+    <!-- container-scroller -->
 
-    <!-- Script Utama Template -->
-    <script src="../assets/backend/vendors/js/vendor.bundle.base.js"></script>
-    <script src="../assets/backend/js/off-canvas.js"></script>
-    <script src="../assets/backend/js/hoverable-collapse.js"></script>
-    <script src="../assets/backend/js/template.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Memanggil Footer dan Script JS dari folder elements -->
+    <?php include 'elements/footer.php'; ?>
 
-    <!-- Script SweetAlert untuk Hapus Data Jenis -->
-    <script>
-        $('.btn-hapus').on('click', function(e) {
-            e.preventDefault();
-            const href = $(this).attr('href');
-            const nama = $(this).attr('data-nama');
-
-            Swal.fire({
-                title: 'Apakah Anda yakin?',
-                text: "Data Jenis '" + nama + "' akan dihapus permanen!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, Hapus!',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.location.href = href;
-                }
-            })
-        });
-    </script>
-
-    <!-- Notifikasi Sukses Hapus -->
-    <?php if (isset($_GET['status']) && $_GET['status'] == 'sukses'): ?>
-        <script>
-            Swal.fire('Terhapus!', 'Data berhasil dihapus.', 'success');
-        </script>
-    <?php endif; ?>
 </body>
-
 </html>

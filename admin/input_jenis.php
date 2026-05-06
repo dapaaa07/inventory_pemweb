@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+    <?php include '../koneksi.php'; 
+    include 'cek_admin.php';?>
 
 <?php include 'elements/header.php'; ?>
 

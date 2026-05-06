@@ -2,6 +2,15 @@
 // Memanggil file koneksi database
 include 'koneksi.php';
 
+if (isset($_SESSION['status']) && $_SESSION['status'] == "login") {
+    if ($_SESSION['tipe_user'] == "admin") {
+        header("location: admin/index.php");
+    } else {
+        header("location: homepage.php");
+    }
+    exit;
+}
+
 // Logika Register
 if (isset($_POST['register'])) {
     $username = $_POST['username'];

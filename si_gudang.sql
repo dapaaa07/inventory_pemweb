@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2026 at 08:52 AM
+-- Generation Time: May 11, 2026 at 06:49 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -36,6 +36,16 @@ CREATE TABLE `detail_pembelian` (
   `harga_barang` int(30) DEFAULT NULL,
   `total_harga` int(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `detail_pembelian`
+--
+
+INSERT INTO `detail_pembelian` (`no_item`, `no_pembelian`, `kd_barang`, `kode_jenis`, `jumlah_barang`, `harga_barang`, `total_harga`) VALUES
+(1, 'BUY-20260511055230', 'BR-003', 'ATK-001', 50, 4000, 200000),
+(2, 'BUY-20260511060507', 'BR-002', 'JN-001', 50, 42000, 2100000),
+(3, 'BUY-20260511061016', 'BR-001', 'JN-001', 30, 40000, 1200000),
+(4, 'BUY-20260511061053', 'BR-003', 'ATK-001', 10, 4000, 40000);
 
 -- --------------------------------------------------------
 
@@ -74,8 +84,9 @@ CREATE TABLE `tb_barang` (
 --
 
 INSERT INTO `tb_barang` (`kd_barang`, `kode_jenis`, `nama_barang`, `stok`, `harga_beli`, `harga_jual`, `gambar_produk`) VALUES
-('BR-001', 'JN-001', 'Oli SPX 2', 100, 40000, 50000, '1777877168_SPX2.jpg-IMAGE.jpg'),
-('BR-002', 'JN-001', 'Oli MPX 2', 50, 42000, 45000, '1777877404_Oli-MPX2.jpg');
+('BR-001', 'JN-001', 'Oli SPX 2', 150, 40000, 50000, '1777877168_SPX2.jpg-IMAGE.jpg'),
+('BR-002', 'JN-001', 'Oli MPX 2', 100, 42000, 45000, '1777877404_Oli-MPX2.jpg'),
+('BR-003', 'ATK-001', 'Buku Tulis', 60, 4000, 7000, '1778471547_Buku-Tulis-Campuss-50-Lembar.jpeg');
 
 -- --------------------------------------------------------
 
@@ -110,6 +121,7 @@ CREATE TABLE `tb_jenis` (
 --
 
 INSERT INTO `tb_jenis` (`kode_jenis`, `jenis`, `satuan`) VALUES
+('ATK-001', 'Alat Tulis Kantor', 'pcs'),
 ('JN-001', 'Otomotif', 'Pcs'),
 ('JN-002', 'Pakaian', 'Lusin');
 
@@ -126,6 +138,16 @@ CREATE TABLE `tb_pembelian` (
   `total_barangall` int(30) DEFAULT NULL,
   `total_hargaall` int(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_pembelian`
+--
+
+INSERT INTO `tb_pembelian` (`no_pembelian`, `tanggal_pembelian`, `id_supplier`, `total_barangall`, `total_hargaall`) VALUES
+('BUY-20260511055230', '2026-05-11', '2', 50, 200000),
+('BUY-20260511060507', '2026-05-11', '1', 50, 2100000),
+('BUY-20260511061016', '2026-05-11', '1', 30, 1200000),
+('BUY-20260511061053', '2026-05-11', '2', 10, 40000);
 
 -- --------------------------------------------------------
 
@@ -156,6 +178,14 @@ CREATE TABLE `tb_supplier` (
   `pass_supplier` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_supplier`
+--
+
+INSERT INTO `tb_supplier` (`id_supplier`, `nama_supplier`, `alamat_supplier`, `telepon_supplier`, `email_supplier`, `pass_supplier`) VALUES
+('1', 'PT. Indojaya', 'Purwakarta', '081294950241', 'indojaya@gmail.com', NULL),
+('2', 'PT. GrahaMas', 'Bandung', '08517245236711', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -166,7 +196,7 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(55) NOT NULL,
   `password` varchar(55) NOT NULL,
-  `tipe_user` varchar(50) NOT NULL
+  `tipe_user` varchar(50) NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -174,7 +204,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `tipe_user`) VALUES
-(8, 'dapa', 'f7304c05a5c5806d5b44ea8b7295e2e6', 'admin');
+(8, 'dapa', 'f7304c05a5c5806d5b44ea8b7295e2e6', 'admin'),
+(10, 'user', '6ad14ba9986e3615423dfca256d04e3f', 'user');
 
 --
 -- Indexes for dumped tables
@@ -248,10 +279,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `detail_pembelian`
+--
+ALTER TABLE `detail_pembelian`
+  MODIFY `no_item` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

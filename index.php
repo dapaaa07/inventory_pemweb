@@ -5,8 +5,8 @@ session_start();
 if (isset($_SESSION['status']) && $_SESSION['status'] == "login") {
     if ($_SESSION['tipe_user'] == "admin") {
         header("location: admin/index.php");
-    } elseif ($_SESSION['tipe_user'] == "customer") {
-        header("location: customer/index.php");
+    } elseif ($_SESSION['tipe_user'] == "user") {
+        header("location: homepage.php");
     } elseif ($_SESSION['tipe_user'] == "supplier") {
         header("location: supplier/index.php");
     }
@@ -35,8 +35,8 @@ if (isset($_POST['login'])) {
         // Logika routing berdasarkan 3 tipe_user
         if ($_SESSION['tipe_user'] == "admin") {
             header("location: admin/index.php");
-        } elseif ($_SESSION['tipe_user'] == "customer") {
-            header("location: customer/index.php");
+        } elseif ($_SESSION['tipe_user'] == "user") {
+            header("location: homepage.php");
         } elseif ($_SESSION['tipe_user'] == "supplier") {
             header("location: supplier/index.php");
         } else {

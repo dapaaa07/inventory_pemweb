@@ -9,7 +9,7 @@
         <li class="dropdown"><a href="../inventory_pemweb/homepage.php#"><span>Profil</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
                 <li><a href="../assets/frontend/#">Setting</a></li>
-                <li><a href="../inventory_pemweb/logout.php">Logout</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </li>
         <li><a href="../assets/frontend/#contact">Contact</a></li>

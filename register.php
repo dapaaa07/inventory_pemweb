@@ -94,21 +94,7 @@ if (isset($_POST['register'])) {
                                         <input type="password" class="form-control form-control-lg border-left-0" id="password" name="password" placeholder="Password" required>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="tipe_user">Tipe User</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend bg-transparent">
-                                            <span class="input-group-text bg-transparent border-right-0">
-                                                <i class="mdi mdi-account-card-details text-primary"></i>
-                                            </span>
-                                        </div>
-                                        <select class="form-control form-control-lg border-left-0" id="tipe_user" name="tipe_user" required>
-                                            <option value="">-- Pilih Tipe --</option>
-                                            <option value="admin">Admin</option>
-                                            <option value="user">User</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                <input type="hidden" name="tipe_user" value="user">
 
                                 <div class="my-3">
                                     <!-- Tombol submit -->

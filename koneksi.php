@@ -2,7 +2,7 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "db_inventory";
+$database = "si_gudang";
 
 $koneksi = mysqli_connect($host,$username,$password,$database);
 ?>

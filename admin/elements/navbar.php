@@ -88,7 +88,3 @@
         </ul>
     </div>
 </nav>
-
-
-
-<?php include 'elements/javascript.php'; ?>

@@ -25,7 +25,6 @@ $data = mysqli_fetch_array($query);
                                 <div class="card-body">
                                     <h4 class="card-title">Edit Data Barang</h4>
 
-                                    <!-- Kirim juga gambar lama agar bisa dihapus jika diganti baru -->
                                     <form class="forms-sample" method="POST" action="update_barang.php" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="kd_barang">Kode Barang</label>
@@ -67,7 +66,6 @@ $data = mysqli_fetch_array($query);
                                             <label>Gambar Produk Saat Ini:</label><br>
                                             <img src="images/<?php echo $data['gambar_produk']; ?>" style="width: 100px; border-radius: 10px; margin-bottom: 10px;">
 
-                                            <!-- Hidden input untuk menyimpan nama gambar lama -->
                                             <input type="hidden" name="gambar_lama" value="<?php echo $data['gambar_produk']; ?>">
 
                                             <label for="gambar_produk">Ganti Gambar (Kosongkan jika tidak ingin mengganti)</label>

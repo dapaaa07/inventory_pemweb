@@ -21,7 +21,6 @@ include 'cek_admin.php';
                                 <div class="card-body">
                                     <h4 class="card-title">Tambah Data Barang</h4>
 
-                                    <!-- WAJIB pakai enctype="multipart/form-data" untuk upload file -->
                                     <form class="forms-sample" method="POST" action="input_aksi_barang.php" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="kd_barang">Kode Barang</label>
@@ -33,7 +32,6 @@ include 'cek_admin.php';
                                             <select class="form-control" id="kode_jenis" name="kode_jenis" required>
                                                 <option value="">-- Pilih Jenis Barang --</option>
                                                 <?php
-                                                // Memanggil data dari tb_jenis untuk mengisi dropdown
                                                 $query_jenis = mysqli_query($koneksi, "SELECT * FROM tb_jenis");
                                                 while ($j = mysqli_fetch_array($query_jenis)) {
                                                     echo "<option value='" . $j['kode_jenis'] . "'>" . $j['kode_jenis'] . " - " . $j['jenis'] . "</option>";

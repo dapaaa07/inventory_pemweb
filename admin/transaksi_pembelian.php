@@ -2,7 +2,6 @@
 include 'cek_admin.php';
 include '../koneksi.php';
 
-// Generate Nomor Pembelian Otomatis (Format: BUY-YmdHis)
 $no_pembelian_otomatis = "BUY-" . date('YmdHis');
 ?>
 <!DOCTYPE html>

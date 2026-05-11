@@ -1,26 +1,21 @@
 <?php
-// Memanggil file koneksi dari folder utama
 include '../koneksi.php';
 include 'cek_admin.php';
 
-// Ambil parameter no_pembelian dari URL
 $no_pembelian = $_GET['no_pembelian'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Memanggil Header (CSS) -->
 <?php include 'elements/header.php'; ?>
 
 <body>
     <div class="container-scroller d-flex">
 
-        <!-- Memanggil Sidebar -->
         <?php include 'elements/sidebar.php'; ?>
 
         <div class="container-fluid page-body-wrapper">
 
-            <!-- Memanggil Navbar -->
             <?php include 'elements/navbar.php'; ?>
 
             <div class="main-panel">
@@ -48,7 +43,6 @@ $no_pembelian = $_GET['no_pembelian'];
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                // Join tabel tb_barang dan tb_jenis untuk menampilkan nama jenis
                                                 $query = mysqli_query($koneksi, "SELECT tb_barang.*, tb_jenis.jenis FROM tb_barang LEFT JOIN tb_jenis ON tb_barang.kode_jenis = tb_jenis.kode_jenis ORDER BY tb_barang.kd_barang ASC");
                                                 $no = 1;
                                                 while ($data = mysqli_fetch_array($query)) {
@@ -62,7 +56,6 @@ $no_pembelian = $_GET['no_pembelian'];
                                                         <td>Rp <?php echo number_format($data['harga_beli'], 0, ',', '.'); ?></td>
                                                         <td>Rp <?php echo number_format($data['harga_jual'], 0, ',', '.'); ?></td>
                                                         <td>
-                                                            <!-- Menampilkan gambar dari folder images -->
                                                             <?php if ($data['gambar_produk'] != ""): ?>
                                                                 <img src="images/<?php echo $data['gambar_produk']; ?>" style="width: 50px; height: 50px; border-radius: 5px; object-fit: cover;" alt="Gambar">
                                                             <?php else: ?>
@@ -70,7 +63,6 @@ $no_pembelian = $_GET['no_pembelian'];
                                                             <?php endif; ?>
                                                         </td>
                                                         <td>
-                                                            <!-- Tombol Pilih: redirect ke detail_pembelian.php dengan data barang sebagai GET parameter -->
                                                             <a href="detail_pembelian.php?no_pembelian=<?php echo $no_pembelian; ?>&kd_barang=<?php echo $data['kd_barang']; ?>&nama_barang=<?php echo urlencode($data['nama_barang']); ?>&kode_jenis=<?php echo $data['kode_jenis']; ?>&stok=<?php echo $data['stok']; ?>&harga_barang=<?php echo $data['harga_beli']; ?>"
                                                                 class="btn btn-sm btn-primary">Pilih</a>
                                                         </td>
@@ -84,15 +76,10 @@ $no_pembelian = $_GET['no_pembelian'];
                         </div>
                     </div>
                 </div>
-                <!-- content-wrapper ends -->
             </div>
-            <!-- main-panel ends -->
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
 
-    <!-- Memanggil Footer dan Script JS dari folder elements -->
     <?php include 'elements/footer.php'; ?>
 
 </body>

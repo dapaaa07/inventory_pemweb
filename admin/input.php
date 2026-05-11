@@ -16,7 +16,6 @@
 <body>
     <div class="container-scroller d-flex">
 
-        <!-- Memanggil file sidebar dari folder elements -->
         <?php include 'elements/sidebar.php'; ?>
 
         <!-- partial -->
@@ -27,7 +26,6 @@
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                         <span class="mdi mdi-menu"></span>
                     </button>
-                    <!-- Sisa Navbar... -->
                 </div>
             </nav>
             <!-- partial -->
@@ -41,8 +39,6 @@
                                     <p class="card-description">
                                         Silakan isi data baru pada form di bawah ini.
                                     </p>
-
-                                    <!-- Arahkan action form ke input-aksi.php sesuai file Anda sebelumnya -->
                                     <form class="forms-sample" method="POST" action="input-aksi.php">
 
                                         <div class="form-group">
@@ -59,7 +55,6 @@
                                         </div>
 
                                         <button type="submit" class="btn btn-primary mr-2">Simpan</button>
-                                        <!-- Tombol cancel mengarah kembali ke index.php -->
                                         <a href="index.php" class="btn btn-light">Batal</a>
                                     </form>
 

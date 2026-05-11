@@ -2,14 +2,7 @@
 // Wajib memanggil session_start() di baris pertama agar data login terbaca!
 session_start();
 
-// Memanggil file koneksi database
 include 'koneksi.php';
-
-// 1. CEK JIKA BELUM LOGIN telah dihapus sementara di sini. 
-// Siapa pun sekarang bisa melihat halaman homepage ini.
-
-// 2. Jika yang masuk terdeteksi sebagai ADMIN, lempar ke dashboard admin.
-// Kita bungkus dengan isset() agar tidak muncul error "Undefined index" bagi pengunjung yang belum login.
 if (isset($_SESSION['status']) && $_SESSION['status'] == "login") {
     if ($_SESSION['tipe_user'] == "admin") {
         header("location: admin/index.php");
@@ -46,14 +39,6 @@ if (isset($_SESSION['status']) && $_SESSION['status'] == "login") {
 
     <!-- Main CSS File -->
     <link href="assets/frontend/assets/css/main.css" rel="stylesheet">
-
-    <!-- =======================================================
-  * Template Name: Bootslander
-  * Template URL: https://bootstrapmade.com/bootslander-free-bootstrap-landing-page-template/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="index-page">
@@ -62,8 +47,6 @@ if (isset($_SESSION['status']) && $_SESSION['status'] == "login") {
         <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
             <a href="assets/frontend/index.html" class="logo d-flex align-items-center">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
-                <!-- <img src="assets/frontend/assets/img/logo.png" alt=""> -->
                 <h1 class="sitename">Inventory Gudang</h1>
             </a>
 

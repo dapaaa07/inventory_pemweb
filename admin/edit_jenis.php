@@ -1,7 +1,7 @@
 <?php
 include '../koneksi.php';
 include 'cek_admin.php';
-$id = $_GET['id']; // ID di sini adalah kode_jenis
+$id = $_GET['id'];
 
 $query = mysqli_query($koneksi, "SELECT * FROM tb_jenis WHERE kode_jenis='$id'");
 $data = mysqli_fetch_array($query);
@@ -28,7 +28,6 @@ $data = mysqli_fetch_array($query);
                                     <form class="forms-sample" method="POST" action="update_jenis.php">
                                         <div class="form-group">
                                             <label for="kode_jenis">Kode Jenis</label>
-                                            <!-- Readonly agar primary key tidak diedit user -->
                                             <input type="text" class="form-control" id="kode_jenis" name="kode_jenis" value="<?php echo $data['kode_jenis']; ?>" readonly>
                                         </div>
                                         <div class="form-group">

@@ -1,12 +1,9 @@
 <?php
-// Memanggil file koneksi database di paling atas
 include 'koneksi.php';
 include 'cek_admin.php';
 
-// Menangkap id dari URL (dikirim dari tombol Edit di index.php)
 $id = $_GET['id'];
 
-// Mengambil data user berdasarkan id dari database
 $query = mysqli_query($koneksi, "SELECT * FROM user WHERE id='$id'");
 $data = mysqli_fetch_array($query);
 ?>
@@ -18,7 +15,6 @@ $data = mysqli_fetch_array($query);
 <body>
     <div class="container-scroller d-flex">
 
-        <!-- Memanggil file sidebar dari folder elements -->
         <?php include 'elements/sidebar.php'; ?>
 
         <!-- partial -->
@@ -37,10 +33,8 @@ $data = mysqli_fetch_array($query);
                                         Silakan ubah data pada form di bawah ini.
                                     </p>
 
-                                    <!-- Arahkan action form ke update.php -->
                                     <form class="forms-sample" method="POST" action="update.php">
 
-                                        <!-- Input hidden untuk menampung ID (Tidak terlihat di layar tapi ikut terkirim) -->
                                         <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
 
                                         <div class="form-group">
@@ -49,7 +43,6 @@ $data = mysqli_fetch_array($query);
                                         </div>
                                         <div class="form-group">
                                             <label for="alamat">Alamat</label>
-                                            <!-- Bisa menggunakan input text biasa seperti ini -->
                                             <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $data['alamat']; ?>" required>
                                         </div>
                                         <div class="form-group">
@@ -58,7 +51,6 @@ $data = mysqli_fetch_array($query);
                                         </div>
 
                                         <button type="submit" class="btn btn-primary mr-2">Simpan Perubahan</button>
-                                        <!-- Tombol cancel mengarah kembali ke index.php -->
                                         <a href="index.php" class="btn btn-light">Batal</a>
                                     </form>
 

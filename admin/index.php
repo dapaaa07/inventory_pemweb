@@ -1,5 +1,4 @@
 <?php
-// Memanggil file koneksi database di paling atas
 include '../koneksi.php';
 include 'cek_admin.php';
 ?>
@@ -11,7 +10,6 @@ include 'cek_admin.php';
 <body>
     <div class="container-scroller d-flex">
 
-        <!-- Memanggil file sidebar dari folder elements -->
         <?php include 'elements/sidebar.php'; ?>
 
         <!-- partial -->
@@ -23,11 +21,8 @@ include 'cek_admin.php';
         </div>
         <!-- page-body-wrapper ends -->
     </div>
-    <!-- Memanggil file footer dari folder elements -->
     <?php include 'elements/footer.php'; ?>
     <!-- container-scroller -->
-
-    <!-- ... -->
 </body>
 
 </html>

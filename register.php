@@ -2,7 +2,6 @@
 include 'koneksi.php';
 session_start();
 
-// 1. CEK JIKA SUDAH LOGIN
 if (isset($_SESSION['status']) && $_SESSION['status'] == "login") {
     if ($_SESSION['tipe_user'] == "admin") {
         header("location: admin/index.php");
@@ -18,7 +17,7 @@ if (isset($_SESSION['status']) && $_SESSION['status'] == "login") {
 if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $password = md5($_POST['password']);
-    $tipe_user = strtolower($_POST['tipe_user']); // Memastikan huruf kecil
+    $tipe_user = strtolower($_POST['tipe_user']);
 
     $cek_user = mysqli_query($koneksi, "SELECT * FROM user WHERE username='$username'");
 

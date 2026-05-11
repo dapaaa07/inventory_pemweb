@@ -1,5 +1,4 @@
 <?php
-// Wajib memanggil session_start() di baris pertama agar data login terbaca!
 session_start();
 
 include 'koneksi.php';

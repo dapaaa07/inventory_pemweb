@@ -2,15 +2,17 @@
 // Mulai session
 session_start();
 
-// Jika belum login
+// 1. Cek apakah user belum login
 if (!isset($_SESSION['status']) || $_SESSION['status'] != "login") {
-    header("location: ../index.php?pesan=belum_login"); // <-- Ubah ke index.php
+    // Jika belum login, tendang kembali ke halaman login
+    header("location: ../login.php?pesan=belum_login");
     exit;
 }
 
-// Jika bukan admin
+// 2. Cek apakah yang login BUKAN admin
 if ($_SESSION['tipe_user'] != "admin") {
-    header("location: ../homepage.php?pesan=akses_ditolak"); // <-- Ubah ke homepage.php
+    // Jika user biasa memaksa masuk ke link admin, kembalikan ke homepage
+    header("location: ../index.php?pesan=akses_ditolak");
     exit;
 }
 ?>

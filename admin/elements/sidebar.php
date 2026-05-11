@@ -46,7 +46,7 @@
             </a>
             <div class="collapse" id="kelola-transaksi">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="data_pembelian.php">Data Pembelian</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="transaksi_pembelian.php">Transaksi Pembelian</a></li>
                     <li class="nav-item"> <a class="nav-link" href="data_penjualan.php">Data Penjualan</a></li>
                 </ul>
             </div>
